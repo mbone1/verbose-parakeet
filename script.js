@@ -4,11 +4,11 @@
 // for color changing, can use moment.js to say... if current time is > change to this color, if time is = change to this color, if time is < change to this color
 // || if current time is > change to this color || how do i acomplish? maybe something like time = currentTime - xMinutes = time. need to figure out how to separate minutes from hours
 
-// ```
-// GIVEN I am using a daily planner to create a schedule
-// WHEN I open the planner
-// THEN the current day is displayed at the top of the calendar
-
+//◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ ⮙ ⮘
+//◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛
+//◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙
+//◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮘
+//◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ 
 // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ day of the week display 
 let currentTime = moment().format("dddd"); // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮘ this uses the moment library to grab the day and sets it to variable of currentTime
 $("#currentDay").text("Today is " + currentTime); // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮘ this says in the currentDay class, input text Today is followed by current day
@@ -25,7 +25,6 @@ let slots = [
   "1600",
   "1700",
 ];
-
 // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ ARRAY TO STORE TO TIME SLOTS 
 // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ MAIN FUNCTION TO SAVE TO LOCAL STORAGE
 function walter(){
@@ -35,27 +34,33 @@ function walter(){
     .addClass("col-md-1 hour")
     .text(slots[i]);
     $("#TB").append(timeBlock);
-    let textArea = $("<textarea>") // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ how can i declare this outside of the loop w/ same functionality? ◙ tried
+    var $textArea = $("<textarea>") // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ how can i declare this outside of the loop w/ same functionality? ◙ tried
     .addClass("col-md-10 description")
-    .val("kick rocks"); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ where input value will be stored
-    $("#TB").append(textArea);
+    .val(["abc"]); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ where input value will be stored
+    $("#TB").append($textArea);
     let saveButton = $("<button>")
     .addClass("btn saveBtn col-md-1 fas fa-save")
     $("#TB").append(saveButton);
     // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ RENDERS TIME SLOT, INPUT FIELD AND SAVE BUTTON TO HTML
     
-    let textAreaVal = textArea.val(); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ loses functionality outside of loop...
-    console.log(textAreaVal)
   }
+  let textAreaVal = $textArea.val(); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ variable to store value of what user has input
+  console.log(textAreaVal)
+  
+  $(".saveBtn").click(function(){ 
+    
+    var textArea = localStorage.getItem("text");
+    textArea = textArea ? textArea.split(',') : [];
+    textArea.push(textAreaVal)
+    localStorage.setItem("text", textArea.toString());
 
-$(".saveBtn").click(function(){ 
-  alert("that's just like, your opinion man") //⮘◙◙◙◙◙◙◙◙◙ will alert x amount of times depending which button is clicked IF inside of loop... slots[0] = 9 times and slots[8] = 1 time 
-}); // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ tried to do an if statement, if < 9 then subtract slots[i], wasn't able to get working, seems like bad practice?
- 
+  }); // 
+
+
 }
 
 walter();
-// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ main function to save to local storage 
+// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ MAIN FUNCTION TO SAVE TO LOCAL STORAGE 
 //object for storing user data--------------------------------------------------------------------------------------------------------------------------------------------
 //object for storing user data--------------------------------------------------------------------------------------------------------------------------------------------
 //function to change color--------------------------------------------------------------------------------------------------------------------------------------------
@@ -71,7 +76,12 @@ walter();
 // THEN the text for that event is saved in local storage ⮘◙◙◙◙◙◙ NEED TO WORK ON
 // WHEN I refresh the page
 // THEN the saved events persist ⮘◙◙◙◙◙◙ NEED TO WORK ON
+
+// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ ideas ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
+// could i use a for loop to loop thru each field before refresh to determine if value contained within should be saved? 
 // 
+
+
 // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ commented out attempts ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
 
 // for (let i = 0; i < slots.length; i++) {
