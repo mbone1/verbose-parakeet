@@ -9,11 +9,11 @@
 // WHEN I open the planner
 // THEN the current day is displayed at the top of the calendar
 
-// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ day of the week display ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
-let currentTime = moment().format("dddd"); // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ this uses the moment library to grab the day and sets it to variable of currentTime
-$("#currentDay").text("Today is " + currentTime); // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ this says in the currentDay class, change text to Today is
-// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ day of the week display ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
-// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ array to store time slots ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
+// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ day of the week display 
+let currentTime = moment().format("dddd"); // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮘ this uses the moment library to grab the day and sets it to variable of currentTime
+$("#currentDay").text("Today is " + currentTime); // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮘ this says in the currentDay class, input text Today is followed by current day
+// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ day of the week display 
+// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ array to store time slots 
 let slots = [
   "0900",
   "1000",
@@ -25,56 +25,54 @@ let slots = [
   "1600",
   "1700",
 ];
-// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ array to store time slots ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
-// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ dynamically rendering fields to page ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
-for (let i = 0; i < slots.length; i++) {
-  const element = slots[i];
-  let timeBlock = $("<div>")
+
+// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ ARRAY TO STORE TO TIME SLOTS 
+// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ MAIN FUNCTION TO SAVE TO LOCAL STORAGE
+function walter(){
+  for (let i = 0; i < slots.length; i++) {
+    const element = slots[i];
+    let timeBlock = $("<div>")
     .addClass("col-md-1 hour")
-    .attr("data-slot", slots[i])
     .text(slots[i]);
-  $("#TB").append(timeBlock);
-  console.log(timeBlock);
-  let timeBlock1 = $("<textarea>")
+    $("#TB").append(timeBlock);
+    let textArea = $("<textarea>") // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ how can i declare this outside of the loop w/ same functionality? ◙ tried
     .addClass("col-md-10 description")
-    .attr("data-slot", slots[i]);
-  $("#TB").append(timeBlock1);
-  console.log(timeBlock1);
-  let timeBlock2 = $("<button>")
-    .addClass("btn saveBtn col-md-1")
-    .attr("data-slot", slots[i]);
-  $("#TB").append(timeBlock2);
-  console.log(timeBlock2);
+    .val("kick rocks"); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ where input value will be stored
+    $("#TB").append(textArea);
+    let saveButton = $("<button>")
+    .addClass("btn saveBtn col-md-1 fas fa-save")
+    $("#TB").append(saveButton);
+    // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ RENDERS TIME SLOT, INPUT FIELD AND SAVE BUTTON TO HTML
+    
+    let textAreaVal = textArea.val(); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ loses functionality outside of loop...
+    console.log(textAreaVal)
+  }
+
+$(".saveBtn").click(function(){ 
+  alert("that's just like, your opinion man") //⮘◙◙◙◙◙◙◙◙◙ will alert x amount of times depending which button is clicked IF inside of loop... slots[0] = 9 times and slots[8] = 1 time 
+}); // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ tried to do an if statement, if < 9 then subtract slots[i], wasn't able to get working, seems like bad practice?
+ 
 }
-// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ dynamically rendering fields to page ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
-//object for storing user data--------------------------------------------------------------------------------------------------------------------------------------------
 
+walter();
+// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ main function to save to local storage 
 //object for storing user data--------------------------------------------------------------------------------------------------------------------------------------------
-
+//object for storing user data--------------------------------------------------------------------------------------------------------------------------------------------
+//function to change color--------------------------------------------------------------------------------------------------------------------------------------------
 //function to change color--------------------------------------------------------------------------------------------------------------------------------------------
 
-//function to change color--------------------------------------------------------------------------------------------------------------------------------------------
-
-// WHEN I scroll down
-// THEN I am presented with timeblocks for standard business hours
+// WHEN I scroll down ⮘◙◙◙◙◙◙ DONE. FORMATTING IS WONKY BUT DOABLE
+// THEN I am presented with timeblocks for standard business hours ⮘◙◙◙◙◙◙ DONE. FORMATTING IS WONKY BUT DOABLE
 // WHEN I view the timeblocks for that day
-// THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-// WHEN I click into a timeblock
+// THEN each timeblock is color coded to indicate whether it is in the past, present, or future ⮘◙◙◙◙◙◙ NEED TO WORK ON
+// WHEN I click into a timeblock 
 // THEN I can enter an event
-// WHEN I click the save button fort that timeblock
-// THEN the text for that event is saved in local storage
+// WHEN I click the save button fort that timeblock 
+// THEN the text for that event is saved in local storage ⮘◙◙◙◙◙◙ NEED TO WORK ON
 // WHEN I refresh the page
-// THEN the saved events persist
-// ```
-
-
-
-
-
-
-
-
-// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ commented out attempts ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
+// THEN the saved events persist ⮘◙◙◙◙◙◙ NEED TO WORK ON
+// 
+// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ commented out attempts ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
 
 // for (let i = 0; i < slots.length; i++) {
 //     const element = slots[i];
@@ -130,16 +128,4 @@ for (let i = 0; i < slots.length; i++) {
 
 //       console.log(letters);
 //     }
-
-{
-  /* <div id = "time block" class = "row time-block">
-                            <div class = "col-md-1 hour">
-                            0900
-                            </div>
-                            <textarea class = "col-md-10 description"></textarea>
-                            <button class = "btn saveBtn col-md-1">
-                            <i class = "fas fa-save"></i>
-                            </button>
-                            </div> */
-}
 // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ commented out attempts ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
