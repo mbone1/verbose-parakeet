@@ -3,7 +3,7 @@
 // if user hits save button, this data is then pushed to an object and stored in local storage
 // for color changing, can use moment.js to say... if current time is > change to this color, if time is = change to this color, if time is < change to this color
 // || if current time is > change to this color || how do i acomplish? maybe something like time = currentTime - xMinutes = time. need to figure out how to separate minutes from hours
-
+// ⮛ ⮙ ⮘ ◙
 //◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ ⮙ ⮘
 //◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛
 //◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙
@@ -26,8 +26,8 @@ let slots = [
   "1700",
 ];
 // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ ARRAY TO STORE TO TIME SLOTS 
-// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ MAIN FUNCTION TO SAVE TO LOCAL STORAGE
-function walter(){
+// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ FOR LOOP TO RENDER CONTENT TO PAGE
+
   for (let i = 0; i < slots.length; i++) {
     const element = slots[i];
     let timeBlock = $("<p>")
@@ -37,55 +37,83 @@ function walter(){
     $("#TB").append(timeBlock);
     var $textArea = $("<textarea>") 
     .addClass("col-md-10 description")
-    .val(""); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ where input value will be stored
+    .val([]); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ where input value will be stored
     $("#TB").append($textArea);
     let saveButton = $("<button>")
     .addClass("btn saveBtn col-md-1 fas fa-save")
     $("#TB").append(saveButton);
   }
-// ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ RENDERS TIME SLOT, INPUT FIELD AND SAVE BUTTON TO HTML
-// let textAreaVal = $textArea.val(); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ variable to store value of what user has input
-// console.log(textAreaVal)
+  // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ FOR LOOP TO RENDER CONTENT TO PAGE
 
-$(".saveBtn").click(function(){ 
-  //  let dingus = localStorage.getItem("inputField")
-  //  if(dingus){
-  //      dingus = JSON.parse(dingus);
-  //  }else{
-  //    dingus = {};
-  //  }
-  const inputFieldKey = $(this).prev("textarea").prev("p").css("background-color", "red").val();
-  const inputField = $(this).prev("textarea").css("background-color", "red").val();
-  localStorage.setItem(inputFieldKey, inputField);
+  // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ FUNCTION TO SAVE VALUE IN TEXTAREA TO LOCALSTORAGE ON CLICK
+  $(".saveBtn").click(function(){ 
+    const inputFieldKey = $(this).prev("textarea").prev("p").css("background-color", "red").val();
+    const inputField = $(this).prev("textarea").css("background-color", "red").val();
+    localStorage.setItem(inputFieldKey, JSON.stringify(inputField));
+    // localStorage.setItem(inputFieldKey, inputField);
+    console.log(inputField)
+    console.log(inputFieldKey)
+    console.log(localStorage.getItem(inputFieldKey))
+    console.log(localStorage.getItem(inputField))
+    // localStorage.getItem(inputFieldKey, JSON.parse(inputField));
+  }); 
+  // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ FUNCTION TO SAVE VALUE IN TEXTAREA TO LOCALSTORAGE ON CLICK
   
-  // console.log(this)
-  // console.log(inputField)
-  // console.log(inputFieldKey)
-  // localStorage.Storage.setItem("schedule", JSON.stringify(schedule));
-  // const hourSlot = $(this).prev(".dingus").attr("id");
-  // console.log(hourSlot);
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  window.onload = function () {
+//  const inputField = localStorage.getItem("inputField")
+//  if (inputField !== null) $(textArea).val("inputField");
+//   }
+
+
+
+
+
+
+
+// let schedule = localStorage.getItem(inputField);
+// if(schedule){ 
+//   schedule = JSON.parse(schedule);
+// }else {
+//   schedule = {};
+// }
+
+// console.log(this)
+// console.log(inputField)
+// console.log(inputFieldKey)
+
 //   function donny(){
-//   var dingus = localStorage.getItem("inputField")
-//    $("textArea").val = dingus
-//  }
- 
-//  donny();
+  
+  //   var dingus = localStorage.getItem("inputField")
+  //    $("textArea").val = dingus
+  //  }
+  
+  //  donny();
   // console.log(inputField)
   // console.log(JSON.stringify($textArea.val))
   // var  = localStorage.getItem("text");
   // textArea = textArea ? textArea.split(',') : [];
   // localStorage.setItem("text", textArea.toString());
   
-}); 
-    
-
+  
   
   
   // const id = $(this).parent().attr("id");
   // console.log(id)
   
-  //jquery access sibling element - may need for my code... read up on jquery parents. simplying
+  //jquery access sibling element - may need for my code... read up on jquery parents. 
   // $(".saveBtn").("click", function(){
     //   let schedule = localStorage.getItem("storage");
     //   if(schedule){
@@ -106,9 +134,6 @@ $(".saveBtn").click(function(){
           //   localStorage.Storage.setItem("schedule", JSON.stringify(scheulde));
           // })
           
-        }
-        
-        walter();
         
         // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ MAIN FUNCTION TO SAVE TO LOCAL STORAGE 
         //object for storing user data--------------------------------------------------------------------------------------------------------------------------------------------
@@ -129,8 +154,6 @@ $(".saveBtn").click(function(){
         
         // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ ideas ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
         // could i use a for loop to loop thru each field before refresh to determine if value contained within should be saved? 
-        // 
-        
         
         // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ commented out attempts ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
         
@@ -191,7 +214,9 @@ $(".saveBtn").click(function(){
                     
                     // window.localStorage.getItem(inputField)
                     // console.log(JSON.parse(window.localStorage.getItem(inputField)));
-
+                    
+                    // let textAreaVal = $textArea.val(); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ variable to store value of what user has input
+                    // console.log(textAreaVal)
                     // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ commented out attempts ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
                     // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ side bar from tucker ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
                     //jquery access sibling element - may need for my code... read up on jquery parents. simplying
@@ -204,14 +229,14 @@ $(".saveBtn").click(function(){
                           //   }
                           
                           //   for(id in schedule){
-        //     $("#").find("textarea").val(schedule[id]);
-        //   }
-        
-        //   const val = $(this).siblings("textarea")[0])
-        //   console.log(val);
-        //   const id = $(this).parent().attr("id");
-        //   console.log(id);
-        //   schedule[id] = val;
-        //   localStorage.Storage.setItem("schedule", JSON.stringify(scheulde));
+                            //     $("#").find("textarea").val(schedule[id]);
+                            //   }
+                            
+                            //   const val = $(this).siblings("textarea")[0])
+                            //   console.log(val);
+                            //   const id = $(this).parent().attr("id");
+                            //   console.log(id);
+                            //   schedule[id] = val;
+                            //   localStorage.Storage.setItem("schedule", JSON.stringify(schedule));
         // })
 // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ side bar from tucker ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙
