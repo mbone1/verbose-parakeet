@@ -37,29 +37,38 @@ let slots = [
     $("#TB").append(timeBlock);
     var $textArea = $("<textarea>") 
     .addClass("col-md-10 description")
-    .val([]); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ where input value will be stored
+    .attr("id", slots[i])
     $("#TB").append($textArea);
+    donny(slots[i]); // ⮘◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ where input value will be stored
     let saveButton = $("<button>")
     .addClass("btn saveBtn col-md-1 fas fa-save")
     $("#TB").append(saveButton);
   }
   // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ FOR LOOP TO RENDER CONTENT TO PAGE
+        function donny (walter) {
+          let localStorageGet = localStorage.getItem(walter);
+          console.log(localStorageGet)
+          let inputFieldGet = $('#' + walter).val(localStorageGet)
+          console.log(`asdfasdfasddddd${walter}`)
+        }
+        
 
   // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮛ FUNCTION TO SAVE VALUE IN TEXTAREA TO LOCALSTORAGE ON CLICK
   $(".saveBtn").click(function(){ 
-    const inputFieldKey = $(this).prev("textarea").prev("p").css("background-color", "red").val();
-    const inputField = $(this).prev("textarea").css("background-color", "red").val();
-    localStorage.setItem(inputFieldKey, JSON.stringify(inputField));
-    // localStorage.setItem(inputFieldKey, inputField);
+    let inputFieldKey = $(this).prev("textarea").prev("p").css("background-color", "red").val();
+    let inputField = $(this).prev("textarea").css("background-color", "red").val(); // how can i 
+    localStorage.setItem(inputFieldKey, inputField);
+    // localStorage.setItem(inputFieldKey, JSON.stringify(inputFieldKey));
+    // let getInputField = localStorage.getItem(inputFieldKey);
     console.log(inputField)
-    console.log(inputFieldKey)
-    console.log(localStorage.getItem(inputFieldKey))
-    console.log(localStorage.getItem(inputField))
-    // localStorage.getItem(inputFieldKey, JSON.parse(inputField));
+    
   }); 
+  
+  // dingus.push("asdfalskdjfasd")
+  // window.localStorage.getItem("inputField")
+  // console.log(dingus)
   // ◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙◙ ⮙ FUNCTION TO SAVE VALUE IN TEXTAREA TO LOCALSTORAGE ON CLICK
   
-
 
 
 
